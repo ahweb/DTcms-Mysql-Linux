@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>站内搜索 - {site.name}</title>
+<meta name="keywords" content="{site.seo_keyword}" />
+<meta name="description" content="{site.seo_description}" />
+<link href="{config.webpath}css/pagination.css" rel="stylesheet" />
+<link href="<%templateskin%>/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" charset="utf-8" src="{config.webpath}scripts/jquery/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="<%templateskin%>/js/common.js"></script>
+</head>
+
+<body>
+<!--Header-->
+<%template src="_header.html"%>
+<!--/Header-->
+
+<div class="section clearfix">
+  <!--右边-->
+  <div class="list-right">
+    <div class="sidebar-box">
+      <div class="line30"></div>
+      <h3>栏目导航</h3>
+      <ul class="navbar">
+        <%set DataTable contentlist=get_article_list("content", 0, 0, "status=0")%>
+        <%foreach(DataRow dr in contentlist.Rows)%>
+        <li>
+          <h4><a title="{dr[title]}" href="<%linkurl("content",{dr[call_index]})%>">{dr[title]}</a></h4>
+        </li>
+        <%/foreach%>
+        <li>
+          <h4><a href="<%linkurl("feedback")%>">留言反馈</a></h4>
+        </li>
+        <li>
+          <h4><a href="<%linkurl("link")%>">友情链接</a></h4>
+        </li>
+      </ul>
+      
+      <div class="line20"></div>
+      <h3>推荐资讯</h3>
+      <div class="focus-list">
+        <ul>
+          <%set DataTable redNews=get_article_list("news", 0, 4, "status=0 and is_red=1 and img_url<>''")%>
+          <%foreach(DataRow dr in redNews.Rows)%>
+          <li>
+            <a title="{dr[title]}" href="<%linkurl("news_show",{dr[id]})%>">
+              <b><img src="{dr[img_url]}" /></b>
+              <span>{dr[title]}</span>
+            </a>
+          </li>
+          <%/foreach%>
+        </ul>
+      </div>
+      
+    </div>
+  </div>
+  <!--/右边-->
+  
+  <!--左边-->
+  <div class="list-auto">
+    <!--取得一个DataTable-->
+    <%set DataTable list=get_search_list(15, out totalcount)%>
+    <!--取得分页页码列表-->
+    <%set pagelist=get_page_link(15, page, totalcount, linkurl("search","?channel=" + channel + "&keyword=" + Server.UrlEncode(keyword) + "&page=__id__"))%>
+    <div class="ntitle">
+      <h2><a>站内搜索</a></h2>
+      <i>搜索关健字： <b class="blue">{keyword}</b> ，共有 <b class="red">{totalcount}</b> 条记录</i>
+    </div>
+    <ul class="n-list">
+      <%foreach(DataRow dr in list.Rows)%>
+      <li>
+        <h2><a target="_blank" href="{dr[link_url]}">{dr[title]}</a></h2>
+        <div class="note">
+          <%if({dr[img_url]}!="")%>
+          <b><img src="{dr[img_url]}" /></b>
+          <%/if%>
+          <p>{dr[remark]}</p>
+          <div class="info">
+            <span class="time">{dr[add_time]}</span>
+            <span class="comm"><script type="text/javascript" src="{config.webpath}tools/submit_ajax.ashx?action=view_comment_count&id={dr[id]}"></script>人评论</span>
+            <span class="view"><script type="text/javascript" src="{config.webpath}tools/submit_ajax.ashx?action=view_article_click&id={dr[id]}"></script>次浏览</span>
+          </div>
+        </div>
+      </li>
+      <%/foreach%>
+      <%if({totalcount}==0)%>
+      <div class="nodata">很抱歉，目前尚未查找到符合条件的信息！</div>
+      <%/if%>
+    </ul>
+    
+    <!--页码列表-->
+    <div class="page-box">
+      <div class="digg">{pagelist}</div>
+    </div>
+    <!--/页码列表-->
+  </div>
+  <!--/左边-->
+
+</div>
+
+<!--Footer-->
+<%template src="_footer.html"%>
+<!--/Footer-->
+</body>
+</html>

@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>视频专区 - {site.name}</title>
+<meta name="keywords" content="{site.seo_keyword}" />
+<meta name="description" content="{site.seo_description}" />
+<link href="<%templateskin%>/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" charset="utf-8" src="{config.webpath}scripts/jquery/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="<%templateskin%>/js/jquery.flexslider-min.js"></script>
+<script type="text/javascript" charset="utf-8" src="<%templateskin%>/js/common.js"></script>
+<script type="text/javascript">
+$(function(){
+	$(".focusbox").flexslider({
+		directionNav: false,
+		pauseOnAction: false
+	});
+});
+</script>
+</head>
+
+<body>
+<!--Header-->
+<%template src="_header.html"%>
+<!--/Header-->
+
+<div class="section clearfix">
+  <div class="line15"></div>
+  <div class="wrapper clearfix">
+    <div class="main-left">
+      <div class="focusbox">
+        <ul class="slides">
+          <%set DataTable focusList=get_article_list(channel, 0, 5, "status=0 and is_slide=1")%>
+          <%foreach(DataRow dr in focusList.Rows)%>
+          <li>
+            <a title="{dr[title]}" href="<%linkurl("video_show",{dr[id]})%>">
+              <span class="note-bg"></span>
+              <span class="note-txt">{dr[title]}</span>
+              <img src="{dr[img_url]}" />
+            </a>
+          </li>
+          <%/foreach%>
+        </ul>
+      </div>
+    </div>
+    <div class="main-right">
+      <ul class="img-list ilist">
+        <%set DataTable redList=get_article_list(channel, 0, 6, "status=0 and is_red=1")%>
+        <%foreach(DataRow dr in redList.Rows)%>
+        <li>
+          <a title="{dr[title]}" href="<%linkurl("video_show",{dr[id]})%>">
+            <em></em>
+            <span class="abs-bg"></span>
+            <span class="txt1">{dr[title]}</span>
+            <span class="txt2">
+              <p>{dr[sub_title]}</p>
+            </span>
+            <img src="{dr[img_url]}" />
+          </a>
+        </li>
+        <%/foreach%>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!--分类列表-->
+<%set DataTable categoryList=get_category_child_list(channel,0)%>
+<%foreach(DataRow cdr in categoryList.Rows)%>
+<div class="section clearfix">
+  <div class="ntitle">
+    <h2>
+      <a href="<%linkurl("video_list",{cdr[id]})%>">{cdr[title]}<em></em></a>
+    </h2>
+    <p>
+      <!--小类-->
+      <%set DataTable bcategoryList=get_category_child_list(channel,{strtoint({cdr[id]})})%>
+      <%loop cdr2 bcategoryList%>
+      <%if(cdr2__loop__id==1)%>
+      <a class="no-bg" href="<%linkurl("video_list",{cdr2[id]})%>">{cdr2[title]}</a>
+      <%else%>
+      <a href="<%linkurl("video_list",{cdr2[id]})%>">{cdr2[title]}</a>
+      <%/if%>
+      <%/loop%>
+    </p>
+  </div>
+  <div class="wrapper clearfix">
+    <ul class="img-list high ilist">
+      <%set DataTable dt=get_article_list(channel, {strtoint({cdr[id]})}, 5, "status=0")%>
+      <%foreach(DataRow dr1 in dt.Rows)%>
+      <li>
+        <a title="{dr1[title]}" href="<%linkurl("video_show",{dr1[id]})%>">
+          <em></em>
+          <span class="abs-bg"></span>
+          <span class="txt1">{dr1[title]}</span>
+          <span class="txt2">
+            <p>{dr1[sub_title]}</p>
+          </span>
+          <img src="{dr1[img_url]}" />
+        </a>
+      </li>
+      <%/foreach%>
+    </ul>
+  </div>
+</div>
+<%/foreach%>
+<!--/分类列表-->
+
+<!--Footer-->
+<%template src="_footer.html"%>
+<!--/Footer-->
+</body>
+</html>

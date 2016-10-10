@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>购物商城 - {site.name}</title>
+<meta name="keywords" content="{site.seo_keyword}" />
+<meta name="description" content="{site.seo_description}" />
+<link href="<%templateskin%>/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" charset="utf-8" src="{config.webpath}scripts/jquery/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="<%templateskin%>/js/common.js"></script>
+</head>
+
+<body>
+<!--Header-->
+<%template src="_header.html"%>
+<!--/Header-->
+
+<!--分类列表-->
+<%set DataTable categoryList=get_category_child_list(channel,0)%>
+<%foreach(DataRow cdr in categoryList.Rows)%>
+<div class="section clearfix">
+  <div class="ntitle">
+    <h2>
+      <a href="<%linkurl("goods_list",{cdr[id]})%>">{cdr[title]}<em></em></a>
+    </h2>
+    <p>
+      <!--小类-->
+      <%set DataTable bcategoryList=get_category_child_list(channel,{strtoint({cdr[id]})})%>
+      <%loop cdr2 bcategoryList%>
+      <%if(cdr2__loop__id==1)%>
+      <a class="no-bg" href="<%linkurl("goods_list",{cdr2[id]})%>">{cdr2[title]}</a>
+      <%else%>
+      <a href="<%linkurl("goods_list",{cdr2[id]})%>">{cdr2[title]}</a>
+      <%/if%>
+      <%/loop%>
+      <!--/小类-->
+    </p>
+  </div>
+  <div class="wrapper igoods clearfix">
+    <div class="img-list2">
+      <ul>
+        <%set DataTable dt=get_article_list(channel, {strtoint({cdr[id]})}, 5, "status=0")%>
+        <%foreach(DataRow dr in dt.Rows)%>
+        <li>
+          <div class="wrap-box">
+            <div class="img-box">
+              <a title="{dr[title]}" href="<%linkurl("goods_show",{dr[id]})%>">
+                <img src="{dr[img_url]}" />
+              </a>
+            </div>
+            <div class="info">
+              <h3><a title="{dr[title]}" href="<%linkurl("goods_show",{dr[id]})%>">{dr[title]}</a></h3>
+              <div class="col">
+                <b>￥{dr[sell_price]}</b>元
+              </div>
+              <div class="col">
+                <i>库存：{dr[stock_quantity]}件</i>
+                市场价：<s>{dr[market_price]}</s>
+              </div>
+            </div>
+          </div>
+        </li>
+        <%/foreach%>
+      </ul>
+    </div>
+    
+  </div>
+</div>
+<%/foreach%>
+<!--/分类列表-->
+
+<!--Footer-->
+<%template src="_footer.html"%>
+<!--/Footer-->
+</body>
+</html>

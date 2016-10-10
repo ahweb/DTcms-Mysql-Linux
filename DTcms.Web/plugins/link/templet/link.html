@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>友情链接 - {site.name}</title>
+<meta content="{site.seo_keyword}" name="keywords" />
+<meta content="{site.seo_description}" name="description" />
+<link type="text/css" rel="stylesheet" href="{config.webpath}css/validate.css" />
+<link type="text/css" rel="stylesheet" href="{config.webpath}css/pagination.css" />
+<link type="text/css" rel="stylesheet" href="{config.webpath}scripts/artdialog/ui-dialog.css" />
+<link type="text/css" rel="stylesheet" href="<%templateskin="main"%>/css/style.css" />
+<script type="text/javascript" src="{config.webpath}scripts/jquery/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="{config.webpath}scripts/jquery/jquery.form.min.js"></script>
+<script type="text/javascript" src="{config.webpath}scripts/jquery/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript" src="{config.webpath}scripts/artdialog/dialog-plus-min.js"></script>
+<script type="text/javascript" src="<%templateskin="main"%>/js/common.js"></script>
+<script type="text/javascript">
+$(function(){
+	//初始化表单
+	AjaxInitForm('#link_form', '#btnSubmit', 1);
+});
+</script>
+</head>
+
+<body>
+<!--Header-->
+<%template skin="main" src="_header.html"%>
+<!--/Header-->
+
+<div class="section clearfix">
+  <!--右边-->
+  <div class="list-right">
+    <div class="sidebar-box">
+      <div class="line30"></div>
+      <h3>栏目导航</h3>
+      <ul class="navbar">
+        <%set DataTable contentlist=get_article_list("content", 0, 0, "status=0")%>
+        <%foreach(DataRow dr in contentlist.Rows)%>
+        <li>
+          <h4><a title="{dr[title]}" href="<%linkurl("content",{dr[call_index]})%>">{dr[title]}</a></h4>
+        </li>
+        <%/foreach%>
+        <li>
+          <h4><a href="<%linkurl("feedback")%>">留言反馈</a></h4>
+        </li>
+        <li>
+          <h4><a href="<%linkurl("link")%>">友情链接</a></h4>
+        </li>
+      </ul>
+      <div class="line20"></div>
+      <h3>客户服务</h3>
+      <div class="sidebar-txt">
+        <p><strong>{site.company}</strong></p>
+        <p>地址：{site.address}</p>
+        <p>电话：{site.tel}</p>
+        <p>E-mail：{site.email}</p>
+        <p>新浪微博：http://weibo.com/dtcms</p>
+      </div>
+    </div>
+  </div>
+  <!--/右边-->
+  
+  <!--左边-->
+  <div class="list-auto">
+    <div class="ntitle">
+      <h2>
+        <a>友情链接</a>
+      </h2>
+    </div>
+    
+    <div class="line15"></div>
+    <!--链接列表-->
+    <div class="links">
+      <ul class="img">
+        <%set DataTable imgList=new DTcms.Web.Plugin.Link.link().get_link_list(0, "is_image=1")%>
+        <%foreach(DataRow dr in imgList.Rows)%>
+        <li>
+          <a target="_blank" href="{dr[site_url]}" title="{dr[title]}">
+            <img src="{dr[img_url]}" />
+          </a>
+        </li>
+        <%/foreach%>
+      </ul>
+      <div class="line15"></div>
+      <ul class="txt">
+        <%set DataTable txtList=new DTcms.Web.Plugin.Link.link().get_link_list(0, "is_image=0")%>
+        <%foreach(DataRow dr in txtList.Rows)%>
+        <a target="_blank" href="{dr[site_url]}" title="{dr[title]}">{dr[title]}</a> | 
+        <%/foreach%>
+      </ul>
+    </div>
+    <!--/链接列表-->
+    <div class="line20"></div>
+    
+    <!--申请链接-->
+    <h2 class="base-tit">
+      <span>申请链接<a name="Add" id="Add"></a></span>
+    </h2>
+    <div class="line10"></div>
+    <form id="link_form" name="link_form" url="{config.webpath}plugins/link/ajax.ashx?action=add&site={site.build_path}">
+    <div class="form-box" style="border:0;">
+      <dl>
+        <dt>网站名称：</dt>
+        <dd>
+          <input id="txtTitle" name="txtTitle" type="text" class="input txt" datatype="*" sucmsg=" " />
+          <span class="Validform_checktip">*需要申请友情链接的网站标题</span>
+        </dd>
+      </dl>
+      <dl>
+        <dt>联系人：</dt>
+        <dd>
+          <input id="txtUserName" name="txtUserName" type="text" class="input txt" datatype="*" sucmsg=" " />
+          <span class="Validform_checktip">*该网站联系人的姓名</span>
+        </dd>
+      </dl>
+      <dl>
+        <dt>联系电话：</dt>
+        <dd>
+          <input id="txtUserTel" name="txtUserTel" type="text" class="input txt" />
+        </dd>
+      </dl>
+      <dl>
+        <dt>电子邮箱：</dt>
+        <dd>
+          <input id="txtEmail" name="txtEmail" type="text" class="input txt" />
+        </dd>
+      </dl>
+      <dl>
+        <dt>链接网址：</dt>
+        <dd>
+          <input id="txtSiteUrl" name="txtSiteUrl" type="text" class="input txt" datatype="url" sucmsg=" " />
+          <span class="Validform_checktip">*申请友情链接的网址</span>
+        </dd>
+      </dl>
+      <dl>
+        <dt>LOGO图片：</dt>
+        <dd>
+          <input id="txtImgUrl" name="txtImgUrl" type="text" class="input txt" />
+          <span class="Validform_checktip">网站链接的LOGO图片地址</span>
+        </dd>
+      </dl>
+      <dl>
+        <dt>验证码：</dt>
+        <dd>
+          <input id="txtCode" name="txtCode" type="text" class="input small" datatype="*" sucmsg=" " />
+          <a href="javascript:;" onclick="ToggleCode(this, '{config.webpath}tools/verify_code.ashx');return false;">
+            <img src="{config.webpath}tools/verify_code.ashx" width="80" height="22" align="absmiddle" /> 看不清楚？
+          </a>
+          <span class="Validform_checktip"></span>
+        </dd>
+      </dl>
+      <dl>
+        <dt></dt>
+        <dd>
+          <input id="btnSubmit" name="btnSubmit" type="submit" value="申请链接" class="btn" />
+        </dd>
+      </dl>
+    </div>
+    </form>
+    <!--/申请链接-->
+  </div>
+  <!--左边-->
+</div>
+
+<!--Footer-->
+<%template skin="main" src="_footer.html"%>
+<!--/Footer-->
+</body>
+</html>

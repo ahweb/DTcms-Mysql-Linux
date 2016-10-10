@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>会员登录 - {site.name}</title>
+<meta name="keywords" content="{site.seo_keyword}" />
+<meta name="description" content="{site.seo_description}" />
+<link href="{config.webpath}scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+<link href="<%templateskin%>/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" charset="utf-8" src="{config.webpath}scripts/jquery/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="{config.webpath}scripts/artdialog/dialog-plus-min.js"></script>
+<script type="text/javascript" charset="utf-8" src="<%templateskin%>/js/common.js"></script>
+<script type="text/javascript" charset="utf-8" src="<%templateskin%>/js/login-validate.js"></script>
+</head>
+
+<body>
+<!--Header-->
+<%template src="_header.html"%>
+<!--/Header-->
+
+<div class="login-box">
+  <div class="section clearfix">
+  <!--页面左边-->
+  <div class="login-left"></div>
+  <!--/页面左边-->
+  
+  <!--页面右边-->
+  <div class="login-right">
+    <h1>会员登录</h1>
+    <form id="loginform" name="loginform" url="{config.webpath}tools/submit_ajax.ashx?action=user_login&site={site.build_path}">
+    <ul>
+      <li>
+        <label>用户名：</label>
+        <input id="txtUserName" name="txtUserName" type="text" placeholder="用户名/手机/邮箱" />
+      </li>
+      <li>
+        <label>密&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
+        <input id="txtPassword" name="txtPassword" type="password" placeholder="输入登录密码" />
+      </li>
+    </ul>
+    <div class="btn-box">
+      <div class="col">
+        <input id="btnSubmit" name="btnSubmit" class="submit" type="submit" value="登 录">
+      </div>
+      <div id="msgtips" class="col tips"></div>
+      <div class="clearfix">
+        <span class="left">
+          <label><input id="chkRemember" name="chkRemember" type="checkbox" /> 记住登录</label>
+        </span>
+        <a class="right" href="<%linkurl("repassword")%>">忘记密码？</a>
+      </div>
+    </div>
+    <input id="turl" name="turl" type="hidden" value="{turl}" /><!--记住上一页网址-->
+    </form>
+    <!--第三方登录-->
+    <div class="oauth-box">
+     <h3>第三方账号登录，还没注册？ <a href="<%linkurl("register")%>">点击注册</a></h3>
+     <p>
+       <%set DataTable oauth_list=get_oauth_app_list(0, "is_lock=0")%> <!--取得一个DataTable-->
+       <%foreach(DataRow dr in oauth_list.Rows)%>
+       <a title="{dr[title]}" href="{config.webpath}api/oauth/{dr[api_path]}/index.aspx"><img src="{dr[img_url]}"></a>
+       <%/foreach%>
+     </p>
+    </div>
+    <!--/第三方登录-->
+  </div>
+  <!--页面右边-->
+</div>
+</div>
+
+<!--Footer-->
+<%template src="_footer.html"%>
+<!--/Footer-->
+</body>
+</html>

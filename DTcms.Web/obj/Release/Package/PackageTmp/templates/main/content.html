@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<%set string category_title=get_category_title(model.category_id,"公司介绍")%>
+<title>{model.title} - {site.name}</title>
+<meta content="{model.seo_keywords}" name="keywords" />
+<meta content="{model.seo_description}" name="description" />
+<link href="<%templateskin%>/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" charset="utf-8" src="{config.webpath}scripts/jquery/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="<%templateskin%>/js/common.js"></script>
+</head>
+
+<body>
+<!--Header-->
+<%template src="_header.html"%>
+<!--/Header-->
+
+<div class="section clearfix">
+  <!--右边-->
+  <div class="list-right">
+    <div class="sidebar-box">
+      <div class="line30"></div>
+      <h3>栏目导航</h3>
+      <ul class="navbar">
+        <%set DataTable contentlist=get_article_list(channel, 0, 0, "status=0")%>
+        <%foreach(DataRow dr in contentlist.Rows)%>
+        <li>
+          <h4><a title="{dr[title]}" href="<%linkurl("content",{dr[call_index]})%>">{dr[title]}</a></h4>
+        </li>
+        <%/foreach%>
+        <li>
+          <h4><a href="<%linkurl("feedback")%>">留言反馈</a></h4>
+        </li>
+        <li>
+          <h4><a href="<%linkurl("link")%>">友情链接</a></h4>
+        </li>
+      </ul>
+      <div class="line20"></div>
+      <h3>客户服务</h3>
+      <div class="sidebar-txt">
+        <p><strong>{site.company}</strong></p>
+        <p>地址：{site.address}</p>
+        <p>电话：{site.tel}</p>
+        <p>E-mail：{site.email}</p>
+        <p>新浪微博：http://weibo.com/dtcms</p>
+      </div>
+    </div>
+  </div>
+  <!--/右边-->
+  
+  <!--左边-->
+  <div class="list-auto">
+    <div class="ntitle">
+      <h2>
+        <a href="javascript:;">{model.title}</a>
+      </h2>
+      <span>当前位置：<a href="<%linkurl("index")%>">首页</a> &gt; {category_title} &gt; {model.title}</span>
+    </div>
+    
+    <div class="entry">
+      {model.content}
+    </div>
+    
+    <!--分享-->
+    <%template src=/_share_js.html/%>
+    <!--/分享-->
+    
+  </div>
+  <!--/左边-->
+  
+</div>
+
+<!--Footer-->
+<%template src="_footer.html"%>
+<!--/Footer-->
+</body>
+</html>

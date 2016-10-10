@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{model.title} - {site.name}</title>
+<meta name="keywords" content="{model.seo_keywords}" />
+<meta name="description" content="{model.seo_description}" />
+<link href="{config.webpath}css/pagination.css" rel="stylesheet" />
+<link href="<%templateskin%>/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" charset="utf-8" src="{config.webpath}scripts/jquery/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="<%templateskin%>/js/common.js"></script>
+</head>
+
+<body>
+<!--Header-->
+<%template src="_header.html"%>
+<!--/Header-->
+
+<div class="section clearfix">
+  
+  <div class="ntitle">
+    <h2>
+      <a href="javascript:;">{model.title}<em></em></a>
+    </h2>
+    <p>
+      <!--小类-->
+      <%set DataTable bcategoryList=get_category_child_list(channel,category_id)%>
+      <%loop cdr2 bcategoryList%>
+      <%if(cdr2__loop__id==1)%>
+      <a class="no-bg" href="<%linkurl("photo_list",{cdr2[id]})%>">{cdr2[title]}</a>
+      <%else%>
+      <a href="<%linkurl("photo_list",{cdr2[id]})%>">{cdr2[title]}</a>
+      <%/if%>
+      <%/loop%>
+      <!--小类-->
+    </p>
+    <%set string category_nav=get_category_menu("photo_list", category_id)%>
+    <span>当前位置：<a href="<%linkurl("index")%>">首页</a> &gt; <a href="<%linkurl("photo")%>">图片分享</a>{category_nav}</span>
+  </div>
+  
+  <div class="wrapper auto clearfix">
+    <ul class="img-list high ilist">
+      <%set DataTable photoList=get_article_list(channel, category_id, pagesize, page, "status=0", out totalcount, out pagelist, "photo_list", category_id, "__id__")%><!--取得一个分页DataTable-->
+      <%foreach(DataRow dr in photoList.Rows)%>
+      <li>
+        <a title="{dr[title]}" href="<%linkurl("photo_show",{dr[id]})%>">
+          <span class="abs-bg"></span>
+          <span class="txt1">{dr[title]}</span>
+          <span class="txt2">
+            <i>阅读：{dr[click]}次</i>
+            <p><%datetostr({dr[add_time]},yyyy-MM-dd)%></p>
+          </span>
+          <img src="{dr[img_url]}" />
+        </a>
+      </li>
+      <%/foreach%>
+    </ul>
+    <!--页码列表-->
+    <div class="page-box">
+      <div class="digg">{pagelist}</div>
+    </div>
+    <!--/页码列表-->
+  </div>
+</div>
+
+<!--Footer-->
+<%template src="_footer.html"%>
+<!--/Footer-->
+</body>
+</html>

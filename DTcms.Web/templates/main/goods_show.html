@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<%set string category_title=get_category_title(model.category_id,"购物商城")%>
+<title>{model.title} - {category_title} - {site.name}</title>
+<meta name="keywords" content="{model.seo_keywords}" />
+<meta name="description" content="{model.seo_description}" />
+<link href="<%templateskin%>/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" charset="utf-8" src="{config.webpath}scripts/jquery/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="{config.webpath}scripts/jquery/jquery.jqzoom.js"></script>
+<script type="text/javascript" charset="utf-8" src="<%templateskin%>/js/common.js"></script>
+<script type="text/javascript" charset="utf-8" src="<%templateskin%>/js/picture.js"></script>
+<script type="text/javascript" charset="utf-8" src="<%templateskin%>/js/cart.js"></script>
+<script type="text/javascript">
+$(function(){
+	//TAB切换
+	tabs('#goodsTabs','click');
+	//智能浮动层
+	$("#tabHead").smartFloat();
+});
+</script>
+</head>
+
+<body>
+<!--Header-->
+<%template src="_header.html"%>
+<!--/Header-->
+
+<div class="section clearfix">
+  <div class="main-wrap">
+    <!--页面左边-->
+    <div class="left941">
+      <!--商品图片-->
+      <div class="goods-pic">
+        <!--幻灯片-->
+        <div class="pic-box">
+          <div class="pic-preview">
+            <span class="jqzoom">
+              <img />
+            </span>
+          </div>
+          <!--缩略图-->
+          <div class="pic-scroll">
+            <a class="prev">&lt;</a>
+            <a class="next">&gt;</a>
+            <div class="items">
+              <ul>
+                <%if(model.albums!=null)%>
+                <%foreach(DTcms.Model.article_albums modelt in model.albums)%>
+                <li><img bimg="{modelt.original_path}" src="{modelt.thumb_path}" onmousemove="preview(this);" /></li>
+                <%/foreach%>
+                <%/if%>
+              </ul>
+            </div>
+          </div>
+          <!--缩略图-->
+        </div>
+        <!--/幻灯片-->
+      </div>
+      <!--/商品图片-->
+      
+      <!--商品信息-->
+      <div class="goods-spec">
+        <script type="text/javascript" src="{config.webpath}tools/submit_ajax.ashx?action=view_article_click&id={model.id}&click=1&hide=1"></script>
+        <h1>{model.title}</h1>
+        <p class="subtitle">{model.fields[sub_title]}</p>
+        <div class="spec-box">
+          <dl>
+            <dt>货号</dt>
+            <dd id="commodityGoodsNo">{model.fields[goods_no]}</dd>
+          </dl>
+          <dl>
+            <dt>市场价</dt>
+            <dd><s id="commodityMarketPrice">¥{model.fields[market_price]}</s></dd>
+          </dl>
+          <dl>
+            <dt>销售价</dt>
+            <dd><em id="commoditySellPrice" class="price">¥{model.fields[sell_price]}</em></dd>
+          </dl>
+        </div>
+        
+        <div class="spec-box line">
+          <dl>
+            <dt>购买数量</dt>
+            <dd>
+              <div class="stock-box">
+                <input id="commodityArticleId" type="hidden" value="{model.id}" />
+                <input id="commodityGoodsId" type="hidden" value="0" />
+                <input id="commoditySelectNum" type="text" maxlength="9" value="1" maxValue="{model.fields[stock_quantity]}" onkeydown="return checkNumber(event);">
+                <a class="add" onclick="addCartNum(1);">+</a>
+                <a class="remove" onclick="addCartNum(-1);">-</a>
+              </div>
+              <span class="stock-txt">
+                库存<em id="commodityStockNum">{model.fields[stock_quantity]}</em>件
+              </span>
+            </dd>
+          </dl>
+          <dl>
+            <dd>
+              <div id="buyButton" class="btn-buy">
+                <button class="buy" onclick="cartAdd(this,'{config.webpath}',1,'<%linkurl("shopping")%>');">立即购买</button>
+                <button class="add" onclick="cartAdd(this,'{config.webpath}',0,'<%linkurl("cart")%>');">加入购物车</button>
+              </div>
+            </dd>
+          </dl>
+        </div>
+         
+        <div class="spec-box line">
+          <dl>
+            <dd>
+              <!--分享-->
+              <%template src=/_share_js.html/%>
+              <!--/分享-->
+            </dd>
+          </dl>
+        </div>
+      </div>
+      <!--商品信息-->
+      <div class="line20"></div>
+      
+      <!--商品介绍-->
+      <div id="goodsTabs" class="goods-tab">
+        <!--选项卡-->
+        <div id="tabHead" class="tab-head">
+          <ul>
+            <li>
+              <a class="selected" href="javascript:;">商品介绍</a>
+            </li>
+            <li>
+              <a href="javascript:;">商品评论</a>
+            </li>
+          </ul>
+        </div>
+        <!--/选项卡-->
+        
+        <!--选项内容-->
+        <div class="tab-content entry" style="display:block">
+          {model.content}
+        </div>
+        <div class="tab-content">
+          <!--用户评论-->
+          <%if(model.is_msg==1)%>
+            <%template src="_comment_box.html"%>
+          <%/if%>
+          <!--用户评论-->
+        </div>
+        <!--选项内容-->
+      </div>
+      <!--/商品介绍-->
+    </div>
+    <!--页面左边-->
+    
+    <!--页面右边-->
+    <div class="left211">
+      <div class="sidebar-box">
+        <div class="line30"></div>
+        <h3>推荐商品</h3>
+        <div class="red-list">
+          <ul>
+            <%set DataTable redPhoto=get_article_list(channel, 0, 4, "status=0 and is_red=1")%>
+            <%foreach(DataRow dr in redPhoto.Rows)%>
+            <li>
+              <a title="{dr[title]}" href="<%linkurl("goods_show",{dr[id]})%>">
+                <div class="img-box">
+                  <img src="{dr[img_url]}" />
+                </div>
+                <span>{dr[title]}</span>
+              </a>
+            </li>
+            <%/foreach%>
+          </ul>
+        </div>
+        <div class="line10"></div>
+        <h3>人气排行</h3>
+        <ul class="rank-list">
+          <%set DataTable hotGoods=get_article_list(channel, 0, 10, "status=0", "click desc,id desc")%>
+          <%loop hotdr hotGoods%>
+          <%if(hotdr__loop__id==1)%>
+          <li class="active">
+          <%else%>
+          <li>
+          <%/if%>
+            <span><%datetostr({hotdr[add_time]},MM-dd)%></span>
+            <i class="num"><%=hotdr__loop__id%></i><a href="<%linkurl("goods_show",{hotdr[id]})%>">{hotdr[title]}</a>
+          </li>
+          <%/loop%>
+        </ul>
+      </div>
+    </div>
+    <!--/页面右边-->
+  
+  </div>
+</div>
+
+<!--Footer-->
+<%template src="_footer.html"%>
+<!--/Footer-->
+</body>
+</html>

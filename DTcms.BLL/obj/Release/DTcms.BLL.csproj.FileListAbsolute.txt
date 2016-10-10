@@ -1,0 +1,14 @@
+E:\Work\Git\Road\dtcms-mysql\DTcms.BLL\obj\Release\DTcms.BLL.csprojResolveAssemblyReference.cache
+E:\Work\Git\Road\dtcms-mysql\DTcms.BLL\bin\Release\DTcms.BLL.dll
+E:\Work\Git\Road\dtcms-mysql\DTcms.BLL\bin\Release\DTcms.BLL.pdb
+E:\Work\Git\Road\dtcms-mysql\DTcms.BLL\bin\Release\DTcms.Common.dll
+E:\Work\Git\Road\dtcms-mysql\DTcms.BLL\bin\Release\DTcms.DAL.Mysql.dll
+E:\Work\Git\Road\dtcms-mysql\DTcms.BLL\bin\Release\DTcms.Model.dll
+E:\Work\Git\Road\dtcms-mysql\DTcms.BLL\bin\Release\MySql.Data.dll
+E:\Work\Git\Road\dtcms-mysql\DTcms.BLL\bin\Release\DTcms.DBUtility.dll
+E:\Work\Git\Road\dtcms-mysql\DTcms.BLL\bin\Release\DTcms.Common.pdb
+E:\Work\Git\Road\dtcms-mysql\DTcms.BLL\bin\Release\DTcms.DAL.Mysql.pdb
+E:\Work\Git\Road\dtcms-mysql\DTcms.BLL\bin\Release\DTcms.Model.pdb
+E:\Work\Git\Road\dtcms-mysql\DTcms.BLL\bin\Release\DTcms.DBUtility.pdb
+E:\Work\Git\Road\dtcms-mysql\DTcms.BLL\obj\Release\DTcms.BLL.dll
+E:\Work\Git\Road\dtcms-mysql\DTcms.BLL\obj\Release\DTcms.BLL.pdb

@@ -1,0 +1,39 @@
+﻿    <div class="info-box">
+      <div class="avatar-box">
+        <a href="<%linkurl("usercenter","avatar")%>" class="img-box">
+          <%if(userModel.avatar!="")%>
+            <img src="{userModel.avatar}" />
+          <%else%>
+            <img src="<%templateskin%>/images/user-avatar.png" />
+          <%/if%>
+        </a>
+        <h3>
+        <%if({userModel.nick_name}!="")%>
+          {userModel.nick_name}
+        <%else%>
+          {userModel.user_name}
+        <%/if%>
+        </h3>
+        <p>余额：{userModel.amount} 元</p>
+        <p>积分：{userModel.point} 分</p>					
+      </div>
+      <ul class="side-nav">
+        <li>
+          <a href="<%linkurl("userorder","list")%>">订单管理</a>
+          <a href="<%linkurl("userorder","close")%>">已关闭订单</a>
+        </li>
+        <li>
+          <a href="<%linkurl("useramount","recharge")%>">账户余额</a>
+          <a href="<%linkurl("userpoint","convert")%>">我的积分</a>
+          <a href="<%linkurl("usermessage","system")%>">站内消息</a>
+          <a href="<%linkurl("usercenter","invite")%>">邀请好友</a>
+        </li>
+        <li>
+          
+          <a href="<%linkurl("usercenter","proinfo")%>">个人资料</a>
+          <a href="<%linkurl("usercenter","avatar")%>">头像设置</a>
+          <a href="<%linkurl("usercenter","password")%>">修改密码</a>
+          <a href="<%linkurl("usercenter","exit")%>">退出登录</a>
+        </li>
+      </ul>
+    </div>

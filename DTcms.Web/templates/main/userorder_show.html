@@ -1,0 +1,267 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>查看订单 - {site.name}</title>
+<meta name="keywords" content="{site.seo_keyword}" />
+<meta name="description" content="{site.seo_description}" />
+<link href="<%templateskin%>/css/style.css" rel="stylesheet" type="text/css" />
+<link href="{config.webpath}scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" charset="utf-8" src="{config.webpath}scripts/jquery/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="{config.webpath}scripts/artdialog/dialog-plus-min.js"></script>
+<script type="text/javascript" charset="utf-8" src="<%templateskin%>/js/common.js"></script>
+</head>
+
+<body>
+<!--Header-->
+<%template src="_header.html"%>
+<!--/Header-->
+
+<div class="section clearfix">
+  <div class="line30"></div>
+
+  <div class="info-wrap">
+    <!--左侧导航-->
+    <%template src="_ucenter_nav.html"%>
+    <!--/左侧导航-->
+    
+    <!--右侧内容-->
+    <div class="home-box">
+      <!--查看订单-->
+      <div class="u-tab-head">
+        <p>
+          <a href="<%linkurl("userorder","list")%>">交易订单</a>
+          <a href="<%linkurl("userorder","close")%>">已关闭订单</a>
+        </p>
+      </div>
+      <div class="u-tab-content">
+        <div class="title-div">
+          <strong>查看订单</strong>
+        </div>
+        
+        <%if(model.status<4)%>
+        <%if(model.payment_status>0)%>
+        <div class="step-box">
+        <%else%>
+        <div class="step-box mini">
+        <%/if%>
+          <ul>
+            <!--下单-->
+            <li class="first done">
+              <div class="progress">
+                <span class="text">下单</span>
+              </div>
+              <div class="info">
+                {model.add_time}
+              </div>
+            </li>
+            <!--/下单-->
+            
+            <%if(model.payment_status>0)%>
+            <!--付款-->
+            <%if(model.payment_status==2)%>
+              <li class="done">
+            <%else%>
+              <li>
+            <%/if%>
+              <div class="progress">
+                <span class="text">付款</span>
+              </div>
+              <div class="info">
+                <%if(model.payment_status==2)%>
+                {model.payment_time}
+                <%/if%>
+              </div>
+            </li>
+            <!--/付款-->
+            <%/if%>
+            
+            <!--确认-->
+            <%if(model.status>=2)%>
+            <li class="done">
+            <%else%>
+            <li>
+            <%/if%>
+              <div class="progress">
+                <span class="text">确认</span>
+              </div>
+              <div class="info">
+                <%if(model.status>=2)%>
+                {model.confirm_time}
+                <%/if%>
+              </div>
+            </li>
+            <!--/确认-->
+            
+            <!--发货-->
+            <%if(model.express_status==2)%>
+            <li class="done">
+            <%else%>
+            <li>
+            <%/if%>
+              <div class="progress">
+                <span class="text">发货</span>
+              </div>
+              <div class="info">
+                <%if(model.express_status==2)%>
+                {model.express_time}
+                <%/if%>
+              </div>
+            </li>
+            <!--发货-->
+            
+            <!--完成-->
+            <%if(model.status>2)%>
+            <li class="last done">
+            <%else%>
+            <li class="last">
+            <%/if%>
+              <div class="progress">
+                <span class="text">完成</span>
+              </div>
+              <div class="info">
+                <%if(model.status>2)%>
+                {model.complete_time}
+                <%/if%>
+              </div>
+            </li>
+            <!--完成-->
+          </ul>
+        </div>
+        <div class="line20"></div>
+        <%/if%>
+
+        <div class="form-box accept-box">
+          <dl class="head">
+            <dd>
+              订单号：{model.order_no}
+              <%if(get_order_payment_status(model.id))%>
+              <a class="btn-pay" href="<%linkurl("payment","?action=confirm&order_no="+model.order_no)%>">去付款</a>
+              <%/if%>
+            </dd>
+          </dl>
+          <dl>
+            <dt>订单状态：</dt>
+            <dd>
+              <%=get_order_status(model.id)%>
+            </dd>
+          </dl>
+          <%if(model.payment_status>0)%>
+          <dl>
+            <dt>支付方式：</dt>
+            <dd><%=get_payment_title(model.payment_id)%></dd>
+          </dl>
+          <%/if%>
+          <%if(model.express_status==2)%>
+          <dl>
+            <dt>发货单号：</dt>
+            <dd><%=get_express_title(model.express_id)%> {model.express_no}</dd>
+          </dl>
+          <%/if%>
+        </div>
+              
+        <div class="line10"></div>
+        <table width="100%" border="0" cellspacing="0" cellpadding="5" class="ftable">
+          <tr>
+            <th align="left" colspan="2">商品信息</th>
+            <th width="10%">单价</td>
+            <th width="10%">积分</th>
+            <th width="10%">数量</th>
+            <th width="10%">金额</th>
+            <th width="10%">积分</th>
+          </tr>
+          <%if(model.order_goods!=null)%>
+          <%foreach(DTcms.Model.order_goods modelt in model.order_goods)%>
+          <tr>
+            <td width="60">
+              <a target="_blank" href="<%linkurl("goods_show",{modelt.article_id})%>">
+                <img src="<%=get_article_img_url(modelt.article_id)%>" class="img" />
+              </a>
+            </td>
+            <td align="left">
+              <a target="_blank" href="<%linkurl("goods_show",{modelt.article_id})%>">{modelt.goods_title}</a>
+              <p>{modelt.spec_text}</p>
+            </td>
+            <td align="center">
+              <s>￥{modelt.goods_price}</s>
+              <p>￥{modelt.real_price}</p>
+            </td>
+            <td align="center">
+              <%if(modelt.point>0)%>
+              +
+              <%/if%>
+              {modelt.point}
+            </td>
+            <td align="center">{modelt.quantity}</td>
+            <td align="center">￥<%=(modelt.real_price*modelt.quantity)%></td>
+            <td align="center"><%=(modelt.point*modelt.quantity)%></td>
+          </tr>
+          <%/foreach%>
+          <%else%>
+          <tr><td colspan="7" align="center">暂无记录</td></tr>
+          <%/if%>
+          <tr>
+            <td colspan="7" align="right">
+              <p>商品金额：<b class="red">￥{model.real_amount}</b>&nbsp;&nbsp;+&nbsp;&nbsp;运费：<b class="red">￥{model.express_fee}</b>&nbsp;&nbsp;+ &nbsp;&nbsp;支付手续费：<b class="red">￥{model.payment_fee}</b>&nbsp;&nbsp;税费：<b class="red">{model.invoice_taxes}</b></p>
+              <p style="font-size:22px;">应付总金额：<b class="red">￥{model.order_amount}</b></p>
+            </td>
+          </tr>
+        </table>
+        
+        <div class="line10"></div>
+        <div class="form-box accept-box">
+          <dl class="head">
+            <dd>收货信息</dd>
+          </dl>
+          <dl>
+            <dt>顾客姓名：</dt>
+            <dd>{model.accept_name}</dd>
+          </dl>
+          <dl>
+            <dt>送货地址：</dt>
+            <dd>{model.area} {model.address} {model.post_code}</dd>
+          </dl>
+          <dl>
+            <dt>联系电话：</dt>
+            <dd>{model.mobile} {model.telphone}</dd>
+          </dl>
+          <dl>
+            <dt>电子邮箱：</dt>
+            <dd>{model.email}</dd>
+          </dl>
+          <dl>
+            <dt>备注留言：</dt>
+            <dd>{model.message}</dd>
+          </dl>
+          <dl>
+            <dt>开具发票：</dt>
+            <dd>
+              <%if({model.is_invoice}==1)%>
+               是
+              <%else%>
+               否
+              <%/if%>
+            </dd>
+          </dl>
+          <%if({model.is_invoice}==1)%>
+          <dl>
+            <dt>发票抬头：</dt>
+            <dd>
+              {model.invoice_title}
+            </dd>
+          </dl>
+          <%/if%>
+        </div>
+        
+      </div>
+      <!--/查看订单-->
+    </div>
+    <!--/右侧内容-->
+  </div>
+</div>
+
+<!--Footer-->
+<%template src="_footer.html"%>
+<!--/Footer-->
+</body>
+</html>

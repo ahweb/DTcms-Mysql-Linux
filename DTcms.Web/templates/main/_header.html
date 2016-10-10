@@ -1,0 +1,45 @@
+﻿<div class="header">
+  <div class="header-wrap">
+    <div class="section">
+      <div class="left-box">
+        <a class="logo" href="<%linkurl("index")%>">{site.name}</a>
+        <p class="nav">
+          <a href="<%linkurl("news")%>">资讯</a>
+          <a href="<%linkurl("goods")%>">商城</a>
+          <a href="<%linkurl("video")%>">视频</a>
+          <a href="<%linkurl("photo")%>">图片</a>
+          <a href="<%linkurl("down")%>">下载</a>
+        </p>
+      </div>
+      <div class="search">
+        <input id="keywords" name="keywords" class="input" type="text" onkeydown="if(event.keyCode==13){SiteSearch('<%linkurl("search")%>', '#keywords');return false};" placeholder="输入回车搜索" x-webkit-speech="" />
+        <input class="submit" type="submit" onclick="SiteSearch('<%linkurl("search")%>', '#keywords');" value="搜索" />
+      </div>
+      <div class="right-box">
+      <script type="text/javascript">
+			$.ajax({
+				type: "POST",
+				url: "{config.webpath}tools/submit_ajax.ashx?action=user_check_login",
+				dataType: "json",
+				timeout: 20000,
+				success: function (data, textStatus) {
+					if (data.status == 1) {
+						$("#menu").prepend('<li class="line"><a href="<%linkurl("usercenter","exit")%>">退出</a></li>');
+						$("#menu").prepend('<li class="login"><em></em><a href="<%linkurl("usercenter","index")%>">会员中心</a></li>');
+					} else {
+						$("#menu").prepend('<li class="line"><a href="<%linkurl("register")%>">注册</a></li>');
+						$("#menu").prepend('<li class="login"><em></em><a href="<%linkurl("login")%>">登录</a></li>');
+					}
+				}
+			});
+		</script>
+        <ul id="menu">
+          <li>
+            <a href="<%linkurl("cart")%>">购物车<span id="shoppingCartCount"><script type="text/javascript" src="{config.webpath}tools/submit_ajax.ashx?action=view_cart_count"></script></span>件</a>
+          </li>
+          <li><a href="<%linkurl("content","contact")%>">联系我们</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
