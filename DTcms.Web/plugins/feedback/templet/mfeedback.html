@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<!--HTML5 doctype-->
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>留言反馈 - {config.webname}</title>
+<link rel="stylesheet" type="text/css" href="{config.webpath}scripts/artdialog/ui-dialog.css" />
+<link rel="stylesheet" type="text/css" href="<%templateskin="mobile"%>/jqmobi/css/icons.css" />
+<link rel="stylesheet" type="text/css" href="<%templateskin="mobile"%>/jqmobi/css/af.ui.base.css" />
+<link rel="stylesheet" type="text/css" href="<%templateskin="mobile"%>/css/style.css" />
+<!--jqMobi主JS-->
+<script type="text/javascript" charset="utf-8" src="{config.webpath}scripts/jquery/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="<%templateskin="mobile"%>/jqmobi/jq.appframework.js"></script>
+<script type="text/javascript" charset="utf-8" src="<%templateskin="mobile"%>/jqmobi/ui/appframework.ui.js"></script>
+<!--jqMobi插件-->
+<script type="text/javascript" charset="utf-8" src="<%templateskin="mobile"%>/jqmobi/plugins/jq.slidemenu.js"></script>
+<script type="text/javascript" charset="utf-8" src="{config.webpath}scripts/jquery/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript" charset="utf-8" src="{config.webpath}scripts/artdialog/dialog-plus-min.js"></script>
+<script type="text/javascript" charset="utf-8" src="<%templateskin="mobile"%>/js/base.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(e) {
+        $(".page-list a").attr("data-ignore",true);
+		//初始化发表评论表单
+		AjaxInitForm('#feedback_form', '#btnSubmit', 1, '#turl');
+    });
+</script>
+</head>
+
+<body>
+<div id="afui">
+  <div id="content">
+  
+    <!--留言反馈-->
+	<div id="mainPanel" class="panel" data-footer="main_footer">
+      <header>
+        <a onclick="history.back(-1);" class="backButton">返回</a>
+        <h1>在线留言</h1>
+        <a onclick="$.ui.toggleSideMenu()" class="menuButton"></a>
+      </header>
+      
+      <div>
+        <ol class="comment-list">
+          <%set DataTable list=new DTcms.Web.Plugin.Feedback.feedback().get_feedback_list(10, page, "", out totalcount)%>
+          <%set string pagelist=get_page_link(10, page, totalcount, "mfeedback", "__id__")%>
+          <%foreach(DataRow dr in list.Rows)%>
+          <li>
+            <div class="inner">
+              <p>{dr[content]}</p>
+              <div class="meta">
+                <span class="blue">{dr[user_name]}</span>
+                <span class="time">{dr[add_time]}</span>
+              </div>
+            </div>
+            <%if({dr[reply_content]}!="")%>
+            <div class="answer">
+              <div class="meta">
+                <span class="time">{dr[reply_time]}</span>
+                <span class="blue">管理员回复：</span>
+              </div>
+              <p>{dr[reply_content]}</p>
+            </div>
+            <%/if%>
+          </li>
+          <%/foreach%>
+          <%if(list.Rows.Count<1)%>
+          <div style="line-height:50px;text-align:center;">暂无留言信息！</div>
+          <%/if%>
+        </ol>
+      </div>
+      
+      <!--分页页码-->
+      <div class="page-list" style="margin:5px 0;">{pagelist}</div>
+      <!--/分页页码-->
+      
+      <!--页面底部导航-->
+      <%template skin="mobile" src="_copyright.html"%>
+      <!--页面底部导航-->
+	</div>
+    <!--留言反馈-->
+    
+    <!--发表留言-->
+    <div id="addPanel" class="panel" data-footer="main_footer">
+      <header>
+        <a onclick="history.back(-1);" class="backButton">返回</a>
+        <h1>发表留言</h1>
+        <a onclick="$.ui.toggleSideMenu()" class="menuButton"></a>
+      </header>
+      
+      <form id="feedback_form" name="feedback_form" url="{config.webpath}plugins/feedback/ajax.ashx?action=add&site={site.build_path}">
+        <div class="form-box">
+          <div><input id="txtUserName" name="txtUserName" type="text" placeholder="输入用户昵称"  datatype="*" nullmsg="请输入用户昵称" sucmsg=" " /></div>
+          <div><input id="txtUserTel" name="txtUserTel" type="text" placeholder="输入联系电话" datatype="*0-20" sucmsg=" " /></div>
+          <div><input id="txtUserQQ" name="txtUserQQ" type="text" placeholder="输入联系QQ" datatype="*0-20" sucmsg=" " /></div>
+          <div><input id="txtUserEmail" name="txtUserEmail" type="text" placeholder="邮箱地址" /></div>
+          <div><input id="txtTitle" name="txtTitle" type="text" placeholder="输入留言标题" datatype="*2-100" nullmsg="请填写留言标题" sucmsg=" " /></div>
+          <div><textarea id="txtContent" name="txtContent" rows="3" placeholder="输入您要反馈的留言内容" datatype="*" nullmsg="请填写留言内容" sucmsg=" "></textarea></div>
+          <div><input id="txtCode" name="txtCode" type="text" placeholder="验证码" style="width:100px;" datatype="*" nullmsg="请输入验证码" sucmsg=" " />
+          <a id="verifyCode" href="javascript:;" onclick="ToggleCode(this, '/tools/verify_code.ashx');return false;" style="display:inline-block;"><img src="http://demo.dtcms.net/tools/verify_code.ashx" width="80" height="30" style="vertical-align:middle;" /> 看不清楚？</a>
+          </div>
+          <div><input id="btnSubmit" name="btnSubmit" type="submit" value="发表留言" class="btn orange full" /></div>
+        </div>
+      </form>
+      <div style="padding-bottom:15px;"></div>
+      <input id="turl" type="hidden" value="<%linkurl("mfeedback")%>" />
+      
+    </div>
+    <!--/发表留言-->
+    
+    <!--底部导航-->
+    <footer id="main_footer">
+      <a href="#mainPanel" class="icon message pressed">留言反馈</a>
+      <a href="#addPanel" class="icon pencil">发表留言</a>
+    </footer>
+    <!--/底部导航-->
+	
+    <!--左侧导航-->
+    <%template skin="mobile" src="_nav.html"%>
+    <!--/左侧导航-->
+      
+  </div>
+</div>
+</body>
+</html>

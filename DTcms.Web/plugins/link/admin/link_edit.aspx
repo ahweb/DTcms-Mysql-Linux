@@ -22,7 +22,7 @@
         //初始化表单验证
         $("#form1").initValidform();
         //初始化上传控件
-        $(".upload-img").InitUploader({ sendurl: "../../../tools/upload_ajax.ashx", swf: "../../../scripts/webuploader/uploader.swf" });
+        $(".upload-img").InitUploader({ sendurl: "../../tools/upload_ajax.ashx", swf: "../../scripts/webuploader/uploader.swf" });
     });
 </script>
 </head>
