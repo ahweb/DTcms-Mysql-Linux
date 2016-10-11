@@ -224,12 +224,12 @@ namespace DTcms.Web.tools
                         }
                     }
                     strTxt.Append("");
-                    strTxt.Append(",\"content\":\"" + Microsoft.JScript.GlobalObject.escape(dr["content"]) + "\"");
+                    strTxt.Append(",\"content\":\"" +  Utils.Escape(dr["content"].ToString()) + "\"");
                     strTxt.Append(",\"add_time\":\"" + dr["add_time"] + "\"");
                     strTxt.Append(",\"is_reply\":" + dr["is_reply"]);
                     if (Convert.ToInt32(dr["is_reply"]) == 1)
                     {
-                        strTxt.Append(",\"reply_content\":\"" + Microsoft.JScript.GlobalObject.escape(dr["reply_content"]) + "\"");
+                        strTxt.Append(",\"reply_content\":\"" + Utils.Escape(dr["reply_content"].ToString()) + "\"");
                         strTxt.Append(",\"reply_time\":\"" + dr["reply_time"] + "\"");
                     }
                     strTxt.Append("}");

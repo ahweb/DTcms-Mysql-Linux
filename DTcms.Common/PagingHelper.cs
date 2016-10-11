@@ -25,7 +25,7 @@ namespace DTcms.Common
             int pageCount = (_recordCount + _pageSize - 1) / _pageSize;
 
             //检查当前页数
-            if (_pageIndex < 1)
+            if (_pageIndex <= 1)
             {
                 _pageIndex = 1;
             }

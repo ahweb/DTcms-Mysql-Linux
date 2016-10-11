@@ -276,7 +276,7 @@ namespace DTcms.DAL.Mysql
         public Model.user_groups GetDefault()
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("selectid,title,grade,upgrade_exp,amount,point,discount,is_default,is_upgrade,is_lock");
+            strSql.Append("select id,title,grade,upgrade_exp,amount,point,discount,is_default,is_upgrade,is_lock");
             strSql.Append(" from " + databaseprefix + "user_groups");
             strSql.Append(" where is_lock=0 order by is_default desc,id asc limit 1");
 

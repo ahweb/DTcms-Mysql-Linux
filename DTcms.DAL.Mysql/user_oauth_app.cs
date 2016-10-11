@@ -200,7 +200,7 @@ namespace DTcms.DAL.Mysql
         public Model.user_oauth_app GetModel(string api_path)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("selectid,title,img_url,app_id,app_key,remark,sort_id,is_lock,api_path");
+            strSql.Append("select id,title,img_url,app_id,app_key,remark,sort_id,is_lock,api_path");
             strSql.Append(" from " + databaseprefix + "user_oauth_app");
             strSql.Append(" where api_path=@api_path limit 1");
             MySqlParameter[] parameters = {
