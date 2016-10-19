@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTcms.Web", "DTcms.Web\DTcms.Web.csproj", "{71ADD9EF-D3AF-4AFE-8427-D10A52BAAF90}"
 EndProject
@@ -23,9 +23,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTcms.DAL.Mysql", "DTcms.DA
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{DC9C6789-E5CB-4B5F-8D58-0C15DA71ECEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTcms.Web.Plugin.Feedback", "DTcms.Web\plugins\feedback\DTcms.Web.Plugin.Feedback.csproj", "{98B143B2-19A9-4BBA-8585-6387F232E990}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTcms.Web.Plugin.Link", "DTcms.Web\plugins\link\DTcms.Web.Plugin.Link.csproj", "{A5996A0F-8D28-41C7-AA03-29C7E9E0B88C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTcms.Web.Plugin.FeedbackPlus", "DTcms.Web\plugins\feedbackplus\DTcms.Web.Plugin.FeedbackPlus.csproj", "{A32411D0-1B69-47A9-AC5C-E7E31D5C297B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTcms.Web.Plugin.Submits", "DTcms.Web\plugins\submits\DTcms.Web.Plugin.Submits.csproj", "{E1C11628-26BD-41CF-A555-14BD45E1DA52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,21 +71,26 @@ Global
 		{EC2AAA33-EBC9-473F-8A8F-279E1B012A63}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC2AAA33-EBC9-473F-8A8F-279E1B012A63}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC2AAA33-EBC9-473F-8A8F-279E1B012A63}.Release|Any CPU.Build.0 = Release|Any CPU
-		{98B143B2-19A9-4BBA-8585-6387F232E990}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{98B143B2-19A9-4BBA-8585-6387F232E990}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{98B143B2-19A9-4BBA-8585-6387F232E990}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{98B143B2-19A9-4BBA-8585-6387F232E990}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A5996A0F-8D28-41C7-AA03-29C7E9E0B88C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A5996A0F-8D28-41C7-AA03-29C7E9E0B88C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5996A0F-8D28-41C7-AA03-29C7E9E0B88C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5996A0F-8D28-41C7-AA03-29C7E9E0B88C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A32411D0-1B69-47A9-AC5C-E7E31D5C297B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A32411D0-1B69-47A9-AC5C-E7E31D5C297B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A32411D0-1B69-47A9-AC5C-E7E31D5C297B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A32411D0-1B69-47A9-AC5C-E7E31D5C297B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1C11628-26BD-41CF-A555-14BD45E1DA52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1C11628-26BD-41CF-A555-14BD45E1DA52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1C11628-26BD-41CF-A555-14BD45E1DA52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1C11628-26BD-41CF-A555-14BD45E1DA52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{98B143B2-19A9-4BBA-8585-6387F232E990} = {DC9C6789-E5CB-4B5F-8D58-0C15DA71ECEE}
 		{A5996A0F-8D28-41C7-AA03-29C7E9E0B88C} = {DC9C6789-E5CB-4B5F-8D58-0C15DA71ECEE}
+		{A32411D0-1B69-47A9-AC5C-E7E31D5C297B} = {DC9C6789-E5CB-4B5F-8D58-0C15DA71ECEE}
+		{E1C11628-26BD-41CF-A555-14BD45E1DA52} = {DC9C6789-E5CB-4B5F-8D58-0C15DA71ECEE}
 	EndGlobalSection
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True

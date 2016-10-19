@@ -609,7 +609,8 @@ namespace DTcms.DAL.SqlServer
             SqlParameter[] parameters = {
 					new SqlParameter("@id", SqlDbType.Int,4)};
             parameters[0].Value = id;
-            cmd = new CommandInfo(strSql.ToString(), parameters);
+            cmd = new  CommandInfo(strSql.ToString(), parameters);
+           
             sqllist.Add(cmd);
 
             int rowsAffected = DbHelperSQL.ExecuteSqlTran(sqllist);

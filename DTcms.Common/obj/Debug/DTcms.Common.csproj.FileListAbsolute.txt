@@ -37,3 +37,4 @@ E:\Work\Git\Road\dtcms-mysql\DTcms.Common\bin\Debug\DTcms.Common.dll
 E:\Work\Git\Road\dtcms-mysql\DTcms.Common\bin\Debug\DTcms.Common.pdb
 E:\Work\Git\Road\dtcms-mysql\DTcms.Common\obj\Debug\DTcms.Common.dll
 E:\Work\Git\Road\dtcms-mysql\DTcms.Common\obj\Debug\DTcms.Common.pdb
+E:\Work\Git\Road\dtcms-mysql\DTcms.Common\obj\Debug\DTcms.Common.csprojResolveAssemblyReference.cache

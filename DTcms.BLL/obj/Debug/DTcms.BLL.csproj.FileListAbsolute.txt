@@ -89,9 +89,6 @@ E:\动力启航\DTcms\发布源码\4.0\MSSQL\DTcms.BLL\bin\Debug\DTcms.DBUtility
 E:\动力启航\DTcms\发布源码\4.0\MSSQL\DTcms.BLL\obj\Debug\ResolveAssemblyReference.cache
 E:\动力启航\DTcms\发布源码\4.0\MSSQL\DTcms.BLL\obj\Debug\DTcms.BLL.dll
 E:\动力启航\DTcms\发布源码\4.0\MSSQL\DTcms.BLL\obj\Debug\DTcms.BLL.pdb
-E:\Work\Git\Road\dtcms-mysql\DTcms.BLL\obj\Debug\DTcms.BLL.csprojResolveAssemblyReference.cache
-E:\Work\Git\Road\dtcms-mysql\DTcms.BLL\obj\Debug\DTcms.BLL.dll
-E:\Work\Git\Road\dtcms-mysql\DTcms.BLL\obj\Debug\DTcms.BLL.pdb
 E:\Work\Git\Road\dtcms-mysql\DTcms.BLL\bin\Debug\DTcms.BLL.dll
 E:\Work\Git\Road\dtcms-mysql\DTcms.BLL\bin\Debug\DTcms.BLL.pdb
 E:\Work\Git\Road\dtcms-mysql\DTcms.BLL\bin\Debug\DTcms.Common.dll
@@ -103,3 +100,6 @@ E:\Work\Git\Road\dtcms-mysql\DTcms.BLL\bin\Debug\DTcms.Common.pdb
 E:\Work\Git\Road\dtcms-mysql\DTcms.BLL\bin\Debug\DTcms.DAL.Mysql.pdb
 E:\Work\Git\Road\dtcms-mysql\DTcms.BLL\bin\Debug\DTcms.Model.pdb
 E:\Work\Git\Road\dtcms-mysql\DTcms.BLL\bin\Debug\DTcms.DBUtility.pdb
+E:\Work\Git\Road\dtcms-mysql\DTcms.BLL\obj\Debug\DTcms.BLL.csprojResolveAssemblyReference.cache
+E:\Work\Git\Road\dtcms-mysql\DTcms.BLL\obj\Debug\DTcms.BLL.dll
+E:\Work\Git\Road\dtcms-mysql\DTcms.BLL\obj\Debug\DTcms.BLL.pdb
