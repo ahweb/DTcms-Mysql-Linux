@@ -35,3 +35,17 @@ E:\Work\Git\Road\dtcms-mysql\DTcms.DAL.Mysql\bin\Debug\zh-Hans\System.Web.WebPag
 E:\Work\Git\Road\dtcms-mysql\DTcms.DAL.Mysql\obj\Debug\DTcms.DAL.Mysql.csprojResolveAssemblyReference.cache
 E:\Work\Git\Road\dtcms-mysql\DTcms.DAL.Mysql\obj\Debug\DTcms.DAL.Mysql.dll
 E:\Work\Git\Road\dtcms-mysql\DTcms.DAL.Mysql\obj\Debug\DTcms.DAL.Mysql.pdb
+G:\Git\DTcms4-Mysql\DTcms.DAL.Mysql\bin\Debug\DTcms.DAL.Mysql.dll.config
+G:\Git\DTcms4-Mysql\DTcms.DAL.Mysql\bin\Debug\DTcms.DAL.Mysql.dll
+G:\Git\DTcms4-Mysql\DTcms.DAL.Mysql\bin\Debug\DTcms.DAL.Mysql.pdb
+G:\Git\DTcms4-Mysql\DTcms.DAL.Mysql\bin\Debug\DTcms.Common.dll
+G:\Git\DTcms4-Mysql\DTcms.DAL.Mysql\bin\Debug\DTcms.DBUtility.dll
+G:\Git\DTcms4-Mysql\DTcms.DAL.Mysql\bin\Debug\DTcms.Model.dll
+G:\Git\DTcms4-Mysql\DTcms.DAL.Mysql\bin\Debug\MySql.Data.dll
+G:\Git\DTcms4-Mysql\DTcms.DAL.Mysql\bin\Debug\MySql.Web.dll
+G:\Git\DTcms4-Mysql\DTcms.DAL.Mysql\bin\Debug\DTcms.Common.pdb
+G:\Git\DTcms4-Mysql\DTcms.DAL.Mysql\bin\Debug\DTcms.DBUtility.pdb
+G:\Git\DTcms4-Mysql\DTcms.DAL.Mysql\bin\Debug\DTcms.Model.pdb
+G:\Git\DTcms4-Mysql\DTcms.DAL.Mysql\obj\Debug\DTcms.DAL.Mysql.csprojResolveAssemblyReference.cache
+G:\Git\DTcms4-Mysql\DTcms.DAL.Mysql\obj\Debug\DTcms.DAL.Mysql.dll
+G:\Git\DTcms4-Mysql\DTcms.DAL.Mysql\obj\Debug\DTcms.DAL.Mysql.pdb

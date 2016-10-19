@@ -165,6 +165,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="templet\js\common.js" />
+    <Content Include="templet\js\laydate\laydate.js" />
+    <Content Include="templet\js\laydate\need\laydate.css" />
+    <Content Include="templet\js\laydate\skins\dahong\icon.png" />
+    <Content Include="templet\js\laydate\skins\dahong\laydate.css" />
+    <Content Include="templet\js\laydate\skins\default\icon.png" />
+    <Content Include="templet\js\laydate\skins\default\laydate.css" />
+    <Content Include="templet\js\laydate\skins\molv\icon.png" />
+    <Content Include="templet\js\laydate\skins\molv\laydate.css" />
     <Content Include="templet\submits.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

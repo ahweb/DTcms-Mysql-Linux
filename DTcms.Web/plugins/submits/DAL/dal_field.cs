@@ -308,9 +308,9 @@ namespace DTcms.Web.Plugin.submits.DAL
         public Model.submits_field GetModel(int id)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select top 1 id,name,title,control_type,data_type,data_length,data_place,item_option,default_value,is_required,is_password,is_html,editor_type,valid_tip_msg,valid_error_msg,valid_pattern,sort_id,is_sys");
+            strSql.Append("select  id,name,title,control_type,data_type,data_length,data_place,item_option,default_value,is_required,is_password,is_html,editor_type,valid_tip_msg,valid_error_msg,valid_pattern,sort_id,is_sys");
             strSql.Append(" from " + databaseprefix + "submits_field ");
-            strSql.Append(" where id=@id");
+            strSql.Append(" where id=@id limit 1");
             MySqlParameter[] parameters = {
 					new MySqlParameter("@id", MySqlDbType.Int32,4)};
             parameters[0].Value = id;
@@ -395,10 +395,6 @@ namespace DTcms.Web.Plugin.submits.DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select ");
-            if (Top > 0)
-            {
-                strSql.Append(" top " + Top.ToString());
-            }
             strSql.Append(" id,name,title,control_type,data_type,data_length,data_place,item_option,default_value,is_required,is_password,is_html,editor_type,valid_tip_msg,valid_error_msg,valid_pattern,sort_id,is_sys ");
             strSql.Append(" FROM " + databaseprefix + "submits_field ");
             if (strWhere.Trim() != "")
@@ -406,6 +402,11 @@ namespace DTcms.Web.Plugin.submits.DAL
                 strSql.Append(" where " + strWhere);
             }
             strSql.Append(" order by " + filedOrder);
+            if (Top > 0)
+            {
+                strSql.Append(" limit " + Top.ToString());
+            }
+
             return DbHelperMySql.Query(strSql.ToString());
         }
 

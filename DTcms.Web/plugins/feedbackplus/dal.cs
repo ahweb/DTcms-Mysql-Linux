@@ -247,10 +247,6 @@ namespace DTcms.Web.Plugin.FeedbackPlus.DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select ");
-            if (Top > 0)
-            {
-                strSql.Append(" top " + Top.ToString());
-            }
             strSql.Append(" id,site_path,title,content,user_name,user_tel,user_qq,user_email,add_time,reply_content,reply_time,is_lock ");
             strSql.Append(" FROM " + databaseprefix + "feedbackplus ");
             if (strWhere.Trim() != "")
@@ -258,6 +254,11 @@ namespace DTcms.Web.Plugin.FeedbackPlus.DAL
                 strSql.Append(" where " + strWhere);
             }
             strSql.Append(" order by add_time desc");
+            if (Top > 0)
+            {
+                strSql.Append(" limit " + Top.ToString());
+            }
+
             return DbHelperMySql.Query(strSql.ToString());
         }
 

@@ -56,8 +56,8 @@ namespace DTcms.Web.Plugin.submits.DAL
         public string GetTitle(int id)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select top 1 title from " + databaseprefix + "submits_category");
-            strSql.Append(" where id=" + id);
+            strSql.Append("select title from " + databaseprefix + "submits_category");
+            strSql.Append(" where id=" + id+" limit 1");
             string title = Convert.ToString(DbHelperMySql.GetSingle(strSql.ToString()));
             if (string.IsNullOrEmpty(title))
             {
@@ -72,8 +72,8 @@ namespace DTcms.Web.Plugin.submits.DAL
         public string GetIds(int id)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select top 1 field_ids from " + databaseprefix + "submits_category");
-            strSql.Append(" where id=" + id);
+            strSql.Append("select  field_ids from " + databaseprefix + "submits_category");
+            strSql.Append(" where id=" + id+" limit 1");
             string title = Convert.ToString(DbHelperMySql.GetSingle(strSql.ToString()));
             if (string.IsNullOrEmpty(title))
             {
@@ -88,8 +88,8 @@ namespace DTcms.Web.Plugin.submits.DAL
         public string GetBuildPath(int id)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select top 1 build_path from " + databaseprefix + "submits_category");
-            strSql.Append(" where id=" + id);
+            strSql.Append("select  build_path from " + databaseprefix + "submits_category");
+            strSql.Append(" where id=" + id+" limit 1");
             string build_path = Convert.ToString(DbHelperMySql.GetSingle(strSql.ToString()));
             if (string.IsNullOrEmpty(build_path))
             {
@@ -254,8 +254,8 @@ namespace DTcms.Web.Plugin.submits.DAL
         public Model.submits_category GetModel(int id)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select  top 1 id,title,field_ids,is_default,sort_id,add_time from " + databaseprefix + "submits_category ");
-            strSql.Append(" where id=@id");
+            strSql.Append("select  id,title,field_ids,is_default,sort_id,add_time from " + databaseprefix + "submits_category ");
+            strSql.Append(" where id=@id limit 1");
             MySqlParameter[] parameters = {
 					new MySqlParameter("@id", MySqlDbType.Int32,4)};
             parameters[0].Value = id;
@@ -298,10 +298,6 @@ namespace DTcms.Web.Plugin.submits.DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select ");
-            if (Top > 0)
-            {
-                strSql.Append(" top " + Top.ToString());
-            }
             strSql.Append(" id,title,field_ids,is_default,sort_id,add_time ");
             strSql.Append(" FROM " + databaseprefix + "submits_category ");
             if (strWhere.Trim() != "")
@@ -309,6 +305,11 @@ namespace DTcms.Web.Plugin.submits.DAL
                 strSql.Append(" where " + strWhere);
             }
             strSql.Append(" order by " + filedOrder);
+            if (Top > 0)
+            {
+                strSql.Append(" limit " + Top.ToString());
+            }
+
             return DbHelperMySql.Query(strSql.ToString());
         }
 

@@ -4,3 +4,9 @@ E:\Work\Git\Road\dtcms-mysql\DTcms.Web\bin\DTcms.Web.Plugin.FeedbackPlus.pdb
 E:\Work\Git\Road\dtcms-mysql\DTcms.Web\plugins\feedbackplus\obj\Debug\DTcms.Web.Plugin.FeedbackPlus.csprojResolveAssemblyReference.cache
 E:\Work\Git\Road\dtcms-mysql\DTcms.Web\plugins\feedbackplus\obj\Debug\DTcms.Web.Plugin.FeedbackPlus.dll
 E:\Work\Git\Road\dtcms-mysql\DTcms.Web\plugins\feedbackplus\obj\Debug\DTcms.Web.Plugin.FeedbackPlus.pdb
+G:\Git\DTcms4-Mysql\DTcms.Web\bin\DTcms.Web.Plugin.FeedbackPlus.dll.config
+G:\Git\DTcms4-Mysql\DTcms.Web\bin\DTcms.Web.Plugin.FeedbackPlus.dll
+G:\Git\DTcms4-Mysql\DTcms.Web\bin\DTcms.Web.Plugin.FeedbackPlus.pdb
+G:\Git\DTcms4-Mysql\DTcms.Web\plugins\feedbackplus\obj\Debug\DTcms.Web.Plugin.FeedbackPlus.csprojResolveAssemblyReference.cache
+G:\Git\DTcms4-Mysql\DTcms.Web\plugins\feedbackplus\obj\Debug\DTcms.Web.Plugin.FeedbackPlus.dll
+G:\Git\DTcms4-Mysql\DTcms.Web\plugins\feedbackplus\obj\Debug\DTcms.Web.Plugin.FeedbackPlus.pdb

@@ -9,8 +9,8 @@ override protected void OnInit(EventArgs e)
 {
 
 	/* 
-		This page was created by DTcms Template Engine at 2016/10/19 17:58:38.
-		本页面代码由DTcms模板引擎生成于 2016/10/19 17:58:38. 
+		This page was created by DTcms Template Engine at 2016/10/19 星期三 22:12:36.
+		本页面代码由DTcms模板引擎生成于 2016/10/19 星期三 22:12:36. 
 	*/
 
 	base.OnInit(e);
@@ -99,12 +99,7 @@ override protected void OnInit(EventArgs e)
 
 
 
-	templateBuilder.Append("\r\n  <!--/右边-->\r\n    ");
-	DTcms.Web.Plugin.submits.Model.submits sModel = new DTcms.Web.Plugin.submits.BLL.submits().GetModel(1);
-
-	templateBuilder.Append("\r\n   <!-- ");
-	templateBuilder.Append(Utils.ObjectToStr(sModel.title));
-	templateBuilder.Append("\r\n    " + Utils.ObjectToStr(sModel.fields["dt"]) + "-->\r\n        \r\n\r\n  <div class=\"list-auto\">\r\n    <h2 class=\"base-tit\">\r\n      <span>自定义多表单<a name=\"Add\" id=\"Add\"></a></span>\r\n    </h2>\r\n\r\n      <div class=\"line10\"></div>\r\n      <form id=\"submit_form\" name=\"submit_form\" url=\"");
+	templateBuilder.Append("\r\n  <!--/右边-->\r\n\r\n        \r\n\r\n  <div class=\"list-auto\">\r\n    <h2 class=\"base-tit\">\r\n      <span>自定义多表单<a name=\"Add\" id=\"Add\"></a></span>\r\n    </h2>\r\n\r\n      <div class=\"line10\"></div>\r\n      <form id=\"submit_form\" name=\"submit_form\" url=\"");
 	templateBuilder.Append(Utils.ObjectToStr(config.webpath));
 	templateBuilder.Append("plugins/submits/ajax.ashx?action=add_mail\">\r\n         \r\n        <div class=\"form-box\" style=\"border:0;\">\r\n\r\n       <dl>\r\n         <dt>称呼：</dt>\r\n         <dd><input id=\"txtTitle\" name=\"txtTitle\" type=\"text\" class=\"input txt\" datatype=\"*2-100\" sucmsg=\" \" /><input  type=\"hidden\" id=\"category_id\" name=\"category_id\" value=\"");
 	templateBuilder.Append(Utils.ObjectToStr(category_id));

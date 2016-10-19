@@ -109,9 +109,13 @@ namespace DTcms.Web.Plugin.submits.DAL
                 sqllist.Add(strSql2.ToString(), parameters2);
               
             }
-            DbHelperMySql.ExecuteSqlTran(sqllist);
-            string str = parameters[8].Value.ToString();
-            return (int)parameters[8].Value;
+          var resut=  DbHelperMySql.ExecuteSqlTran(sqllist);
+          if (resut)
+          {
+
+              return 1;
+          }
+          else { return 0; }
 
 
 		}
@@ -263,8 +267,8 @@ namespace DTcms.Web.Plugin.submits.DAL
         public Model.submits  GetModel(int id)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select  top 1 id,title,content,user_name,user_tel,user_qq,user_email,add_time,reply_content,reply_time,is_lock from " + databaseprefix + "submits ");
-            strSql.Append(" where id=@id");
+            strSql.Append("select  id,title,content,user_name,user_tel,user_qq,user_email,add_time,reply_content,reply_time,is_lock from " + databaseprefix + "submits ");
+            strSql.Append(" where id=@id limit 1");
             MySqlParameter[] parameters = {
 					new MySqlParameter("@id", MySqlDbType.Int32,4)};
             parameters[0].Value = id;
@@ -328,8 +332,8 @@ namespace DTcms.Web.Plugin.submits.DAL
                         sb.Append(dr["name"].ToString() + ",");
                     }
                     StringBuilder strSql2 = new StringBuilder();
-                    strSql2.Append("select top 1 " + Utils.DelLastComma(sb.ToString()) + " from " + databaseprefix + "submits_value ");
-                    strSql2.Append(" where submits_id=@submits_id ");
+                    strSql2.Append("select " + Utils.DelLastComma(sb.ToString()) + " from " + databaseprefix + "submits_value ");
+                    strSql2.Append(" where submits_id=@submits_id limit 1");
                     MySqlParameter[] parameters2 = {
 					    new MySqlParameter("@submits_id", MySqlDbType.Int32,4)};
                     parameters2[0].Value = id;
@@ -370,16 +374,17 @@ namespace DTcms.Web.Plugin.submits.DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select ");
-            if (Top > 0)
-            {
-                strSql.Append(" top " + Top.ToString());
-            }
             strSql.Append(" a.id, a.title,a.content,a.reply_content, a.user_name,a.user_tel,a.user_qq,a.user_email,a.reply_time,a.is_lock,b.* FROM " + databaseprefix + "submits as a left join " + databaseprefix + "submits_value as b on a.id=b.submits_id ");
             if (strWhere.Trim() != "")
             {
                 strSql.Append(" where " + strWhere);
             }
             strSql.Append(" order by b.add_time desc");
+            if (Top > 0)
+            {
+                strSql.Append(" limit " + Top.ToString());
+            }
+
             return DbHelperMySql.Query(strSql.ToString());
         }
 

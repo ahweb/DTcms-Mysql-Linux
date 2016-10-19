@@ -34,3 +34,9 @@ E:\Work\Git\Road\dtcms-mysql\DTcms.Web\bin\DTcms.Web.Plugin.Submits.dll
 E:\Work\Git\Road\dtcms-mysql\DTcms.Web\bin\DTcms.Web.Plugin.Submits.pdb
 E:\Work\Git\Road\dtcms-mysql\DTcms.Web\plugins\submits\obj\Debug\DTcms.Web.Plugin.Submits.dll
 E:\Work\Git\Road\dtcms-mysql\DTcms.Web\plugins\submits\obj\Debug\DTcms.Web.Plugin.Submits.pdb
+G:\Git\DTcms4-Mysql\DTcms.Web\bin\DTcms.Web.Plugin.Submits.dll.config
+G:\Git\DTcms4-Mysql\DTcms.Web\bin\DTcms.Web.Plugin.Submits.dll
+G:\Git\DTcms4-Mysql\DTcms.Web\bin\DTcms.Web.Plugin.Submits.pdb
+G:\Git\DTcms4-Mysql\DTcms.Web\plugins\submits\obj\Debug\DTcms.Web.Plugin.Submits.csprojResolveAssemblyReference.cache
+G:\Git\DTcms4-Mysql\DTcms.Web\plugins\submits\obj\Debug\DTcms.Web.Plugin.Submits.dll
+G:\Git\DTcms4-Mysql\DTcms.Web\plugins\submits\obj\Debug\DTcms.Web.Plugin.Submits.pdb

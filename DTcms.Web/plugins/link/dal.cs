@@ -182,8 +182,8 @@ namespace DTcms.Web.Plugin.Link.DAL
 		public Model.link GetModel(int id)
 		{
 			StringBuilder strSql=new StringBuilder();
-            strSql.Append("select  top 1 id,site_path,title,user_name,user_tel,email,site_url,img_url,is_image,sort_id,is_red,is_lock,add_time from " + databaseprefix + "link ");
-			strSql.Append(" where id=@id");
+            strSql.Append("select  id,site_path,title,user_name,user_tel,email,site_url,img_url,is_image,sort_id,is_red,is_lock,add_time from " + databaseprefix + "link ");
+			strSql.Append(" where id=@id limit 1");
 			MySqlParameter[] parameters = {
 					new MySqlParameter("@id", MySqlDbType.Int32,4)};
 			parameters[0].Value = id;
@@ -284,7 +284,7 @@ namespace DTcms.Web.Plugin.Link.DAL
             strSql.Append(" order by sort_id asc,add_time desc");
             if (Top > 0)
             {
-                strSql.Append(" limit 0, " + Top.ToString());
+                strSql.Append(" limit " + Top.ToString());
             }
             return DbHelperMySql.Query(strSql.ToString());
         }

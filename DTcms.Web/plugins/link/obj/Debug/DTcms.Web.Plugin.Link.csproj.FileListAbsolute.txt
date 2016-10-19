@@ -4,3 +4,9 @@ E:\Work\Git\Road\dtcms-mysql\DTcms.Web\bin\DTcms.Web.Plugin.Link.pdb
 E:\Work\Git\Road\dtcms-mysql\DTcms.Web\plugins\link\obj\Debug\DTcms.Web.Plugin.Link.csprojResolveAssemblyReference.cache
 E:\Work\Git\Road\dtcms-mysql\DTcms.Web\plugins\link\obj\Debug\DTcms.Web.Plugin.Link.dll
 E:\Work\Git\Road\dtcms-mysql\DTcms.Web\plugins\link\obj\Debug\DTcms.Web.Plugin.Link.pdb
+G:\Git\DTcms4-Mysql\DTcms.Web\bin\DTcms.Web.Plugin.Link.dll.config
+G:\Git\DTcms4-Mysql\DTcms.Web\bin\DTcms.Web.Plugin.Link.dll
+G:\Git\DTcms4-Mysql\DTcms.Web\bin\DTcms.Web.Plugin.Link.pdb
+G:\Git\DTcms4-Mysql\DTcms.Web\plugins\link\obj\Debug\DTcms.Web.Plugin.Link.csprojResolveAssemblyReference.cache
+G:\Git\DTcms4-Mysql\DTcms.Web\plugins\link\obj\Debug\DTcms.Web.Plugin.Link.dll
+G:\Git\DTcms4-Mysql\DTcms.Web\plugins\link\obj\Debug\DTcms.Web.Plugin.Link.pdb
