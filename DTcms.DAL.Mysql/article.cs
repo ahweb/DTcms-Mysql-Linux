@@ -89,6 +89,7 @@ namespace DTcms.DAL.Mysql
                         strSql.Append("channel_id,category_id,call_index,title,link_url,img_url,seo_title,seo_keywords,seo_description,zhaiyao,content,sort_id,click,status,is_msg,is_top,is_red,is_hot,is_slide,is_sys,user_name,add_time,update_time)");
                         strSql.Append(" values (");
                         strSql.Append("@channel_id,@category_id,@call_index,@title,@link_url,@img_url,@seo_title,@seo_keywords,@seo_description,@zhaiyao,@content,@sort_id,@click,@status,@is_msg,@is_top,@is_red,@is_hot,@is_slide,@is_sys,@user_name,@add_time,@update_time)");
+                        strSql.Append(";select LAST_INSERT_ID() as id");
                         MySqlParameter[] parameters = {
 					            new MySqlParameter("@channel_id", MySqlDbType.Int32,4),
 					            new MySqlParameter("@category_id", MySqlDbType.Int32,4),
@@ -144,9 +145,17 @@ namespace DTcms.DAL.Mysql
                             parameters[22].Value = DBNull.Value;
                         }
                         //添加主表数据
-                        DbHelperMySql.ExecuteSql(conn, trans, strSql.ToString(), parameters); //带事务
-                        //取得新插入的ID
-                        model.id = GetMaxId(conn, trans);
+                        //DbHelperMySql.ExecuteSql(conn, trans, strSql.ToString(), parameters); //带事务
+                        var id = int.Parse(DbHelperMySql.GetSingle(conn, trans, strSql.ToString(), parameters).ToString()); //带事务
+                        if (id > 0)
+                        {
+                            model.id = id;
+                        }
+                        else {
+                            trans.Rollback();
+                        }
+                        ////取得新插入的ID
+                        //model.id = GetMaxId(conn, trans);
                         #endregion
 
                         #region 添加扩展字段====================

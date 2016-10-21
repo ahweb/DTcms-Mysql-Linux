@@ -27,8 +27,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTcms.Web.Plugin.Link", "DT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTcms.Web.Plugin.FeedbackPlus", "DTcms.Web\plugins\feedbackplus\DTcms.Web.Plugin.FeedbackPlus.csproj", "{A32411D0-1B69-47A9-AC5C-E7E31D5C297B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTcms.Web.Plugin.Submits", "DTcms.Web\plugins\submits\DTcms.Web.Plugin.Submits.csproj", "{E1C11628-26BD-41CF-A555-14BD45E1DA52}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,10 +77,6 @@ Global
 		{A32411D0-1B69-47A9-AC5C-E7E31D5C297B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A32411D0-1B69-47A9-AC5C-E7E31D5C297B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A32411D0-1B69-47A9-AC5C-E7E31D5C297B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E1C11628-26BD-41CF-A555-14BD45E1DA52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E1C11628-26BD-41CF-A555-14BD45E1DA52}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E1C11628-26BD-41CF-A555-14BD45E1DA52}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E1C11628-26BD-41CF-A555-14BD45E1DA52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,7 +84,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{A5996A0F-8D28-41C7-AA03-29C7E9E0B88C} = {DC9C6789-E5CB-4B5F-8D58-0C15DA71ECEE}
 		{A32411D0-1B69-47A9-AC5C-E7E31D5C297B} = {DC9C6789-E5CB-4B5F-8D58-0C15DA71ECEE}
-		{E1C11628-26BD-41CF-A555-14BD45E1DA52} = {DC9C6789-E5CB-4B5F-8D58-0C15DA71ECEE}
 	EndGlobalSection
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
