@@ -6,4 +6,4 @@
 <a target="_blank" href=""></a>
 
 
-[<img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="DTcms-Linux 开发群" title="DTcms-Linux 开发群">](http://shang.qq.com/wpa/qunwpa?idkey=0c829841d51ffe0ef3febedc5e3c538deacfc42903092fc04324fe4c78b7f8c6)
+[加入QQ 群](http://shang.qq.com/wpa/qunwpa?idkey=0c829841d51ffe0ef3febedc5e3c538deacfc42903092fc04324fe4c78b7f8c6)
