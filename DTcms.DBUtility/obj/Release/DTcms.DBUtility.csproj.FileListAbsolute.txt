@@ -1,9 +1,0 @@
-E:\Work\Git\Road\dtcms-mysql\DTcms.DBUtility\bin\Release\DTcms.DBUtility.dll.config
-E:\Work\Git\Road\dtcms-mysql\DTcms.DBUtility\bin\Release\DTcms.DBUtility.dll
-E:\Work\Git\Road\dtcms-mysql\DTcms.DBUtility\bin\Release\DTcms.DBUtility.pdb
-E:\Work\Git\Road\dtcms-mysql\DTcms.DBUtility\bin\Release\DTcms.Common.dll
-E:\Work\Git\Road\dtcms-mysql\DTcms.DBUtility\bin\Release\MySql.Data.dll
-E:\Work\Git\Road\dtcms-mysql\DTcms.DBUtility\bin\Release\DTcms.Common.pdb
-E:\Work\Git\Road\dtcms-mysql\DTcms.DBUtility\obj\Release\DTcms.DBUtility.csprojResolveAssemblyReference.cache
-E:\Work\Git\Road\dtcms-mysql\DTcms.DBUtility\obj\Release\DTcms.DBUtility.dll
-E:\Work\Git\Road\dtcms-mysql\DTcms.DBUtility\obj\Release\DTcms.DBUtility.pdb

@@ -1,4 +1,0 @@
-E:\Work\Git\Road\dtcms-mysql\DTcms.Common\bin\Release\DTcms.Common.dll
-E:\Work\Git\Road\dtcms-mysql\DTcms.Common\bin\Release\DTcms.Common.pdb
-E:\Work\Git\Road\dtcms-mysql\DTcms.Common\obj\Release\DTcms.Common.dll
-E:\Work\Git\Road\dtcms-mysql\DTcms.Common\obj\Release\DTcms.Common.pdb

@@ -1,7 +1,0 @@
-E:\Work\Git\Road\dtcms-mysql\DTcms.Model\bin\Release\DTcms.Model.dll
-E:\Work\Git\Road\dtcms-mysql\DTcms.Model\bin\Release\DTcms.Model.pdb
-E:\Work\Git\Road\dtcms-mysql\DTcms.Model\bin\Release\DTcms.Common.dll
-E:\Work\Git\Road\dtcms-mysql\DTcms.Model\bin\Release\DTcms.Common.pdb
-E:\Work\Git\Road\dtcms-mysql\DTcms.Model\obj\Release\DTcms.Model.csprojResolveAssemblyReference.cache
-E:\Work\Git\Road\dtcms-mysql\DTcms.Model\obj\Release\DTcms.Model.dll
-E:\Work\Git\Road\dtcms-mysql\DTcms.Model\obj\Release\DTcms.Model.pdb
