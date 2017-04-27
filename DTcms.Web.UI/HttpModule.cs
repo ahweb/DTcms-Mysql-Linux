@@ -9,6 +9,7 @@ using System.Web;
 using System.Configuration;
 using System.Xml;
 using DTcms.Common;
+using log4net;
 
 namespace DTcms.Web.UI
 {
@@ -17,13 +18,17 @@ namespace DTcms.Web.UI
     /// </summary>
     public class HttpModule : System.Web.IHttpModule
     {
+        private readonly ILog Logger = LogManager.GetLogger(typeof(HttpModule));
         /// <summary>
         /// 实现接口的Init方法
         /// </summary>
         /// <param name="context"></param>
         public void Init(HttpApplication context)
         {
+            Common.Utils.LogWrite("info", "Init！");
+
             context.BeginRequest += new EventHandler(ReUrl_BeginRequest);
+            Logger.Debug("Init 初始化");
         }
 
         /// <summary>
@@ -40,6 +45,8 @@ namespace DTcms.Web.UI
         /// <param name="e">包含事件数据的 EventArgs</param>
         private void ReUrl_BeginRequest(object sender, EventArgs e)
         {
+            Common.Utils.LogWrite("info", "页面请求事件处理！");
+
             HttpContext context = ((HttpApplication)sender).Context;
             Model.siteconfig siteConfig = new BLL.siteconfig().loadConfig(); //获得站点配置信息
             string requestPath = context.Request.Path.ToLower(); //获得当前页面(含目录)
