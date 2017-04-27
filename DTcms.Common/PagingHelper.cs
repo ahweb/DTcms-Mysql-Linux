@@ -60,7 +60,7 @@ namespace DTcms.Common
                 sbSql.AppendFormat(" ORDER BY {0}",_orderField);
             }
             
-            sbSql.AppendFormat(" LIMIT {0},{1}", ((_pageIndex - 1) * _pageSize), _pageIndex * _pageSize);
+            sbSql.AppendFormat(" LIMIT {0},{1}", ((_pageIndex - 1) * _pageSize), _pageSize);
 
             #endregion
             return sbSql.ToString();

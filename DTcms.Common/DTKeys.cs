@@ -14,7 +14,7 @@ namespace DTcms.Common
         /// <summary>
         /// 版本年号
         /// </summary>
-        public const string ASSEMBLY_YEAR = "2015";
+        public const string ASSEMBLY_YEAR = "2016";
         //File======================================================
         /// <summary>
         /// 插件配制文件名
